@@ -1,0 +1,11 @@
+langchain-community
+fastapi
+uvicorn[standard]
+langgraph>=0.2.0
+langchain-google-genai
+google-generativeai
+python-dotenv
+pydantic
+websockets
+google-auth-oauthlib
+google-api-python-client

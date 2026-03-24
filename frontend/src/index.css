@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-gray-100 antialiased;
+  }
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+}
+
+.agent-node-done {
+  @apply border-green-500 text-green-500 shadow-[0_0_15px_rgba(34,197,94,0.3)];
+}
+
+.agent-node-active {
+  @apply border-blue-500 text-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.3)] animate-pulse;
+}
+
+.agent-node-error {
+  @apply border-red-500 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] animate-shake;
+}
