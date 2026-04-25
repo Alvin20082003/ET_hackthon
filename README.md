@@ -1,12 +1,16 @@
-# 🚀 MissionControl: Multi-Agent Enterprise Workflow OS
+# <img src="./assets/images/favicon.png" width="40" height="40" /> MissionControl
 
-![MissionControl Dashboard](./assets/images/dashboard.png)
+![MissionControl Logo](./assets/images/logo.png)
+
+> **"Orchestrating Autonomous Enterprise Workflows with Multi-Agent Precision."**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![React 18](https://img.shields.io/badge/react-18-61dafb.svg)](https://reactjs.org/)
 
 **MissionControl** is an advanced multi-agent orchestration system that transforms raw meeting transcripts into fully automated, enterprise-grade task execution pipelines. Built for the modern enterprise, it leverages AI agents, real-time monitoring, and adaptive learning to achieve autonomous workflow management with human-in-the-loop oversight.
+
+![MissionControl Dashboard](./assets/images/dashboard.png)
 
 ---
 
