@@ -1,5 +1,7 @@
 # 🚀 MissionControl: Multi-Agent Enterprise Workflow OS
 
+![MissionControl Dashboard](./assets/images/dashboard.png)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![React 18](https://img.shields.io/badge/react-18-61dafb.svg)](https://reactjs.org/)
@@ -11,6 +13,8 @@
 ## 🌟 Key Features
 
 ### 🤖 Multi-Agent Pipeline
+![Multi-Agent Pipeline](./assets/images/pipeline.png)
+
 Five specialized AI agents work in a synchronized pipeline:
 - **Scribe Agent**: Extracts structured tasks from raw transcripts.
 - **Planner Agent**: Schedules tasks, manages Google Calendar events, and sends Gmail notifications.
@@ -25,6 +29,8 @@ Inspired by self-improving systems, MissionControl learns from every run:
 - **Persistent Learning**: Lessons are saved and improved upon with every single execution.
 
 ### 📊 Real-Time Operations
+![Cognitive Load Monitor](./assets/images/load_monitor.png)
+
 - **Cognitive Load Monitor**: Real-time tracking of team capacity with **Auto-Rebalancing** (moving tasks when a member hits 85% load).
 - **Workflow Risk Scoring**: Pre-launch assessment of complexity, deadline clustering, and dependency risks.
 - **Live WebSocket Streaming**: Real-time audit trails and agent status updates.
