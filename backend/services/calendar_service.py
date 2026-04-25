@@ -7,7 +7,16 @@ from datetime import datetime, timedelta
 
 SCOPES = ['https://www.googleapis.com/auth/calendar.events']
 
+# Cache the Calendar service to avoid rebuilding it for every event
+_calendar_service_cache = None
+
 def get_calendar_service():
+    global _calendar_service_cache
+    
+    # Return cached service if available
+    if _calendar_service_cache is not None:
+        return _calendar_service_cache
+    
     creds = None
     if os.path.exists('token.json'):
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
@@ -25,6 +34,7 @@ def get_calendar_service():
             
     try:
         service = build('calendar', 'v3', credentials=creds, static_discovery=False)
+        _calendar_service_cache = service  # Cache the service
         return service
     except Exception as e:
         logging.error(f"Error building Calendar service: {e}")

@@ -16,6 +16,9 @@ OWNER_EMAILS = {
 # Sensible SLA hours per priority
 PRIORITY_SLA = {5: 24, 4: 48, 3: 72, 2: 120, 1: 168}
 
+# LLM plans dictionary (empty for rule-based planning)
+llm_plans = {}
+
 def planner_agent(state):
     tasks = state.get("tasks", [])
     current_log = state.get("audit_log", [])
@@ -31,34 +34,6 @@ def planner_agent(state):
         return {"audit_log": current_log + [idle], "current_agent": "Planner"}
 
     new_entries = []
-
-    # Try Ollama planner (optional enhancement)
-    llm_plans = {}
-    try:
-        from utils.llm_factory import LLMFactory
-        from langchain_core.output_parsers import JsonOutputParser
-        from pydantic import BaseModel, Field
-        from typing import List
-
-        class TaskPlan(BaseModel):
-            id: str
-            iso_deadline: str
-            priority: int
-            sla_hours: int
-            critical_path: bool
-
-        class PlanExtraction(BaseModel):
-            plans: List[TaskPlan]
-
-        llm = LLMFactory.get_llm(provider="ollama", model="llama3")
-        parser = JsonOutputParser(pydantic_object=PlanExtraction)
-        tasks_info = "\n".join([f"ID:{t.id} Title:{t.title} Deadline:{t.deadline} Priority:{t.priority}" for t in tasks])
-        prompt = f"Plan these tasks, return JSON. Current time: 2025-09-12T00:00:00Z\n{tasks_info}\n{parser.get_format_instructions()}"
-        r = llm.invoke(prompt)
-        result = parser.parse(r.content)
-        llm_plans = {p["id"]: p for p in result["plans"]}
-    except Exception:
-        pass  # Fall through to rule-based planning
 
     for t in tasks:
         plan = llm_plans.get(t.id)

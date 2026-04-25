@@ -1,25 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-gray-950 text-gray-100 antialiased;
+    @apply bg-[#F1EDE6] text-[#3A2D28] antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
   }
 }
 
 .glass {
-  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  @apply bg-[#EBE3DB] border border-[#D1C7BD];
 }
 
 .agent-node-done {
-  @apply border-green-500 text-green-500 shadow-[0_0_15px_rgba(34,197,94,0.3)];
+  @apply border-green-600 text-green-600 shadow-[0_0_15px_rgba(0,180,100,0.2)];
 }
 
 .agent-node-active {
-  @apply border-blue-500 text-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.3)] animate-pulse;
+  @apply border-[#A48374] text-[#A48374] shadow-[0_0_15px_rgba(164,131,116,0.3)] animate-pulse;
 }
 
 .agent-node-error {
-  @apply border-red-500 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] animate-shake;
+  @apply border-[#ff3355] text-[#ff3355] shadow-[0_0_15px_rgba(255,51,85,0.3)] animate-shake;
 }

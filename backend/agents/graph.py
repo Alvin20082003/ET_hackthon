@@ -22,9 +22,11 @@ def create_workflow_graph():
     
     def retry_logic(state: WorkflowState):
         tasks = state.get("tasks", [])
-        retry_count = state.get("retry_count", 0)
-        pending_tasks = any(t.status == "in_progress" for t in tasks)
-        if pending_tasks and retry_count < 2:
+        # Check if there are any tasks still in backlog or in_progress
+        backlog_tasks = any(t.status == "backlog" for t in tasks)
+        in_progress_tasks = any(t.status == "in_progress" for t in tasks)
+        
+        if backlog_tasks or in_progress_tasks:
             return "executor"
         return "auditor"
         

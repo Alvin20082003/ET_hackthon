@@ -12,7 +12,16 @@ SCOPES = [
     'https://www.googleapis.com/auth/calendar.events'
 ]
 
+# Cache the Gmail service to avoid rebuilding it for every email
+_gmail_service_cache = None
+
 def get_gmail_service():
+    global _gmail_service_cache
+    
+    # Return cached service if available
+    if _gmail_service_cache is not None:
+        return _gmail_service_cache
+    
     creds = None
     token_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'token.json')
     logging.info(f"Looking for token at: {token_path}")
@@ -40,6 +49,7 @@ def get_gmail_service():
     try:
         service = build('gmail', 'v1', credentials=creds, static_discovery=False)
         logging.info("Gmail service built successfully.")
+        _gmail_service_cache = service  # Cache the service
         return service
     except Exception as e:
         logging.error(f"Error building Gmail service: {e}")

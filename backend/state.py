@@ -8,6 +8,7 @@ class WorkflowState(TypedDict, total=False):
     audit_log: List[AuditEntry]
     current_agent: str
     retry_count: int
+    task_attempts: Dict[str, int]
     escalation_needed: bool
     escalation_reason: str
     human_decision: Optional[str]

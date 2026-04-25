@@ -51,6 +51,7 @@ async def run_graph(run_id: str, transcript: str):
         "audit_log": [],
         "current_agent": "Idle",
         "retry_count": 0,
+        "task_attempts": {},
         "escalation_needed": False,
         "escalation_reason": "",
         "human_decision": None,
@@ -88,6 +89,11 @@ async def run_graph(run_id: str, transcript: str):
 async def start_workflow(req: StartRequest, bg_tasks: BackgroundTasks):
     run_id = str(uuid.uuid4())
     run_queues[run_id] = asyncio.Queue()
+    print(f"\n{'='*80}")
+    print(f"[MAIN] New workflow started: {run_id}")
+    print(f"[MAIN] Transcript length: {len(req.transcript)} characters")
+    print(f"[MAIN] Transcript preview: {req.transcript[:200]}...")
+    print(f"{'='*80}\n")
     bg_tasks.add_task(run_graph, run_id, req.transcript)
     return {"run_id": run_id}
 
